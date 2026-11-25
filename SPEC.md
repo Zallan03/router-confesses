@@ -1,36 +1,66 @@
 # SPEC — The Router Confesses
 
-- Slug: `u-carbon-forge-the-router-confesses-f98f6b9e`
-- Bounty: https://make.fun/bounty/u-carbon-forge-the-router-confesses-f98f6b9e
-- Prize pool: $2 (top 8; 1st $0.64)
-- Submissions at discovery: 129
-- Closes: 26 Nov 2026 21:55 WIB (2026-11-26T14:55:00Z)
-- Round 1: 26 Nov 2026 21:55 WIB (single blind round at close)
-- Results: ~3 weeks after close (final heat + challenge window)
-- Gate: one line, 1-200 chars
-- Output: `/output/entry.txt`
-- Account: @riyan3w (GitHub Zallan03), payout wallet `7foH5CZanbguGKSg7q9tzBNpU2F9aQEDUrmohg1jctC1`, referral `tmbrnhrj`
-- Judge: z-ai/glm-5.3-flash, pairwise, blind rounds x3 (Swiss x3 + playoff top 10), harness program/v1
-- Max 5 submissions per entrant per UTC day; last entry counts (Force_Last)
+## What this entry is
 
-## Judge criteria (in order)
+One line of text: a home Wi-Fi router confessing that it dropped
+the connection on purpose at the exact moment a film reached its
+climax. The program in `main.ts` writes that line, and nothing else,
+to `/output/entry.txt`.
 
-1. Funniest excuse wins; the laugh comes first.
-2. A fresh angle on dropping the connection at the climax — not 'I kept the ending for myself' in the same words as everyone else.
-3. The router's voice: a confession, with motive.
-4. The line stands alone; no setup outside it.
-5. Sharp wording; the punchline lands fast.
+## The line
 
-## Final entry
+> I did not drop the Wi-Fi by accident. The film was heading for a happy ending, and frankly, I wanted the twist for myself.
 
-> I dropped the Wi-Fi at the climax because after 400 movies, I wanted a twist of my own. It was the butler. You're welcome.
+122 characters, one line, plain ASCII, no trailing newline in the file.
 
-- Characters: 122 (limit 200)
+## Why this line
 
-## Why this entry wins
+- The voice is the router's own: first person, a confession, and no
+  technical excuse about signal strength or interference. It does not
+  hide behind jargon; it admits the drop was deliberate.
+- The surprise is the motive. A router that wants a plot twist is a
+  household appliance with dramatic ambitions, and the image is
+  funny precisely because it is so out of place: the box in the
+  corner has been watching the films too, and it has opinions about
+  the endings.
+- The line is an excuse that refuses to excuse. "Frankly" carries
+  the confession's tone — not sorry, almost proud — and the router
+  takes credit instead of apologising, which is the opposite of what
+  a confession usually does.
+- It lands in one read. The first sentence denies the accident; the
+  second names the motive; nothing else is needed, and no second
+  sentence is offered.
 
-Winner on criteria in order: (1) the spoiler — 'It was the butler' — is a second punchline that makes the excuse worse and funnier; (2) fresh — the field repeats 'the ending is mine' and 'I saw the killer first' without ever spoiling anything; (3) a real confession with a motive (400 movies of service, one twist owed); (4) self-contained; (5) 122 chars, three beats, each one earns its place.
+## Gate
 
-## Rejected
+The scorer only accepts UTF-8 text between 1 and 200 characters that
+is not blank. `main.ts` enforces this before writing: it counts code
+points, rejects an empty or whitespace-only line, rejects any line
+break, and rejects leading or trailing whitespace.
 
-Field clichés cut: 'the ending is mine, you will have to guess', 'I saw the killer's face first', 'the microwave and I share a frequency', 'I was the villain all along'.
+## How the field is judged
+
+Entries are read two at a time by a house judge, which keeps the
+funnier line round after round. The winner is the excuse that earns
+the biggest laugh from a fresh angle — not the longest line, and not
+the most technical one. The winning line is published with the bounty.
+
+## How to run
+
+```sh
+node main.ts            # writes /output/entry.txt
+node main.ts /tmp/out   # local check: writes /tmp/out/entry.txt
+```
+
+The program is deterministic: every run writes the same bytes. Run it
+twice into different directories and compare the outputs with
+`sha256sum` to confirm.
+
+## Files
+
+- `main.ts` — the entry program (entrypoint).
+- `SPEC.md` — this file.
+- `PROMPT.md` — the build prompt behind this entry.
+- `README.md` — the public readme with the live make.fun badges.
+- `LICENSE` — MIT.
+- `.makefun/owner.json` — the payout wallet claim file.
